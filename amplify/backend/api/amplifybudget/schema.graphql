@@ -13,7 +13,6 @@ type Expense @model
     { allow: owner, operations: [create, update, delete, read] }
   ]) {
   id: ID!
-  userId: String!
   amount: Float!
   category: String!
   description: String!

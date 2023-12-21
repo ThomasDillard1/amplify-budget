@@ -56,7 +56,6 @@ export const onCreateExpense = /* GraphQL */ `
   ) {
     onCreateExpense(filter: $filter, owner: $owner) {
       id
-      userId
       amount
       category
       description
@@ -75,7 +74,6 @@ export const onUpdateExpense = /* GraphQL */ `
   ) {
     onUpdateExpense(filter: $filter, owner: $owner) {
       id
-      userId
       amount
       category
       description
@@ -94,7 +92,6 @@ export const onDeleteExpense = /* GraphQL */ `
   ) {
     onDeleteExpense(filter: $filter, owner: $owner) {
       id
-      userId
       amount
       category
       description

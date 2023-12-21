@@ -39,7 +39,6 @@ export const getExpense = /* GraphQL */ `
   query GetExpense($id: ID!) {
     getExpense(id: $id) {
       id
-      userId
       amount
       category
       description
@@ -60,7 +59,6 @@ export const listExpenses = /* GraphQL */ `
     listExpenses(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        userId
         amount
         category
         description

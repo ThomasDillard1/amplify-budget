@@ -56,7 +56,6 @@ export const createExpense = /* GraphQL */ `
   ) {
     createExpense(input: $input, condition: $condition) {
       id
-      userId
       amount
       category
       description
@@ -75,7 +74,6 @@ export const updateExpense = /* GraphQL */ `
   ) {
     updateExpense(input: $input, condition: $condition) {
       id
-      userId
       amount
       category
       description
@@ -94,7 +92,6 @@ export const deleteExpense = /* GraphQL */ `
   ) {
     deleteExpense(input: $input, condition: $condition) {
       id
-      userId
       amount
       category
       description
