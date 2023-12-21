@@ -14,6 +14,9 @@
     "categories": {
       "auth": {
         "amplifybudgetd1f8750e": {}
+      },
+      "api": {
+        "amplifybudget": {}
       }
     }
   }
