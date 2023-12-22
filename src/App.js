@@ -16,15 +16,15 @@ import { listTodos } from './graphql/queries';
 
 import { useEffect, useState } from 'react';
 import ExpenseComponent from './ExpenseComponent';
+import { NavBarHeader2 } from './ui-components';
 
 // To connect with amplify and configure user
 Amplify.configure(config);
 
-
-
 function App({ signOut, user }) {
   return (
     <>
+      <NavBarHeader2 />
       <h1>Hello {user.username}</h1>
       
       <button onClick={signOut}>Sign out</button>

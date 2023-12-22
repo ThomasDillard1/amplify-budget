@@ -40,7 +40,7 @@ export default function ExpenseComponent() {
           console.log(e)
         }
       }
-      createExpenseItem();
+      //createExpenseItem();
   
       async function displayExpenses(){
         const expenses = await client.graphql({query:listExpenses});
