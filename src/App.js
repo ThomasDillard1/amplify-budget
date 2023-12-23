@@ -3,17 +3,6 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import config from './amplifyconfiguration.json';
 
-// GraphQL API
-import { generateClient } from 'aws-amplify/api';
-
-// Expenses Model
-import { createExpense, updateExpense, deleteExpense } from './graphql/mutations';
-import { listExpenses } from './graphql/queries';
-
-//ToDo Model
-import { createTodo, updateTodo, deleteTodo } from './graphql/mutations';
-import { listTodos } from './graphql/queries';
-
 import { useEffect, useState } from 'react';
 import ExpenseComponent from './ExpenseComponent';
 import { NavBarHeader2 } from './ui-components';
@@ -26,9 +15,6 @@ function App({ signOut, user }) {
   return (
     <>
       <NavBarHeader2 />
-      
-      
-      
       <ExpenseComponent></ExpenseComponent>
     </>
   );

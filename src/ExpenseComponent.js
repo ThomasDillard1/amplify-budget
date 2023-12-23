@@ -1,15 +1,10 @@
-/*
-    Three parts: Listing the expenses, creating the expenses, deleting the expenses
-    1) Listing the expenses - easy, do first
-    2) Creating the expenses - use a button
-    3) Deleting the expenses - use a button
-*/
-
 import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 // Expenses Model
 import { createExpense, updateExpense, deleteExpense } from './graphql/mutations';
 import { listExpenses } from './graphql/queries';
-
+import {
+  ExpenseCreateForm 
+ } from './ui-components';
 
 // GraphQL API
 import { generateClient } from 'aws-amplify/api';
@@ -25,6 +20,7 @@ const client = generateClient();
 export default function ExpenseComponent() {
     const [items, setItems] = useState([]);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
 
     useEffect(() => {  
       displayExpenses();
@@ -115,6 +111,7 @@ export default function ExpenseComponent() {
     return (
         <>        
         <h1>Expenses</h1>
+        <ExpenseCreateForm />
         <Button
           size="small"
           variation="primary"
@@ -122,6 +119,9 @@ export default function ExpenseComponent() {
             createExpenseItem();
           }}
         >Create Expense</Button>
+
+        {/*Create Expense Modal */}
+        
       <table>
         <thead>
           <tr>
@@ -129,7 +129,7 @@ export default function ExpenseComponent() {
             <th onClick={() => handleSort('description')}>Description</th>
             <th onClick={() => handleSort('amount')}>Amount</th>
             <th onClick={() => handleSort('date')}>Date</th>
-            <th>Delete</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -141,13 +141,13 @@ export default function ExpenseComponent() {
               <td>{item.date}</td>
               <td>
                 <DeleteIcon 
-                sx={{ color:  'hsl(0, 50%, 50%)'}}
+                sx={{ color:  'hsl(0, 50%, 50%)', cursor: 'pointer' }}
                 onClick={() => {
                   deleteExpenseItem(item.id);
                 }}
               />
               <EditIcon
-                sx={{ color: 'hsl(190, 50%, 50%)'}}
+                sx={{ color: 'hsl(190, 50%, 50%)', cursor: 'pointer'}}
                 onClick={() => {
                   editExpenseItem(item.id);
                 }}
