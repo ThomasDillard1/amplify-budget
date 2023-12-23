@@ -140,12 +140,14 @@ export default function ExpenseComponent() {
               <td>{item.amount}</td>
               <td>{item.date}</td>
               <td>
-              <DeleteIcon 
+                <DeleteIcon 
+                sx={{ color:  'hsl(0, 50%, 50%)'}}
                 onClick={() => {
                   deleteExpenseItem(item.id);
                 }}
               />
               <EditIcon
+                sx={{ color: 'hsl(190, 50%, 50%)'}}
                 onClick={() => {
                   editExpenseItem(item.id);
                 }}
