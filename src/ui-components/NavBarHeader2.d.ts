@@ -22,13 +22,9 @@ export declare type NavBarHeader2OverridesProps = {
     "Frame 5"?: PrimitiveOverrideProps<FlexProps>;
     "Amplify Mark"?: PrimitiveOverrideProps<ViewProps>;
     Union?: PrimitiveOverrideProps<IconProps>;
-    Home?: PrimitiveOverrideProps<TextProps>;
-    Products?: PrimitiveOverrideProps<TextProps>;
-    Pricing?: PrimitiveOverrideProps<TextProps>;
-    Contact?: PrimitiveOverrideProps<TextProps>;
+    Dashboard?: PrimitiveOverrideProps<TextProps>;
     actions?: PrimitiveOverrideProps<FlexProps>;
-    Button39493466?: PrimitiveOverrideProps<ButtonProps>;
-    Button39493467?: PrimitiveOverrideProps<ButtonProps>;
+    Button?: PrimitiveOverrideProps<ButtonProps>;
 } & EscapeHatchProps;
 export declare type NavBarHeader2Props = React.PropsWithChildren<Partial<FlexProps> & {
     overrides?: NavBarHeader2OverridesProps | undefined | null;

@@ -6,10 +6,16 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { getOverrideProps } from "./utils";
+import {
+  getOverrideProps,
+  useAuthSignOutAction,
+  useNavigateAction,
+} from "./utils";
 import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function NavBarHeader2(props) {
   const { overrides, ...rest } = props;
+  const dashboardOnClick = useNavigateAction({ type: "url", url: "" });
+  const buttonOnClick = useAuthSignOutAction({ global: false });
   return (
     <Flex
       gap="10px"
@@ -96,71 +102,11 @@ export default function NavBarHeader2(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Home"
-          {...getOverrideProps(overrides, "Home")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(13,26,38,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Products"
-          {...getOverrideProps(overrides, "Products")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(13,26,38,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Pricing"
-          {...getOverrideProps(overrides, "Pricing")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(13,26,38,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Contact"
-          {...getOverrideProps(overrides, "Contact")}
+          children="Dashboard"
+          onClick={() => {
+            dashboardOnClick();
+          }}
+          {...getOverrideProps(overrides, "Dashboard")}
         ></Text>
       </Flex>
       <Flex
@@ -181,19 +127,12 @@ export default function NavBarHeader2(props) {
           shrink="0"
           size="default"
           isDisabled={false}
-          variation="link"
-          children="Log in"
-          {...getOverrideProps(overrides, "Button39493466")}
-        ></Button>
-        <Button
-          width="unset"
-          height="unset"
-          shrink="0"
-          size="default"
-          isDisabled={false}
           variation="primary"
-          children="Sign up"
-          {...getOverrideProps(overrides, "Button39493467")}
+          children="Sign out"
+          onClick={() => {
+            buttonOnClick();
+          }}
+          {...getOverrideProps(overrides, "Button")}
         ></Button>
       </Flex>
     </Flex>

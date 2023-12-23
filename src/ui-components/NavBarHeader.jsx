@@ -7,9 +7,7 @@
 /* eslint-disable */
 import * as React from "react";
 import { getOverrideProps } from "./utils";
-import LogoWithText from "./LogoWithText";
-import { Flex, Image, Text } from "@aws-amplify/ui-react";
-import MyIcon from "./MyIcon";
+import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 export default function NavBarHeader(props) {
   const { overrides, ...rest } = props;
   return (
@@ -27,36 +25,55 @@ export default function NavBarHeader(props) {
       {...getOverrideProps(overrides, "NavBarHeader")}
       {...rest}
     >
-      <LogoWithText
-        width="127.88px"
-        height="18.91px"
-        display="block"
-        gap="unset"
-        alignItems="unset"
-        justifyContent="unset"
-        shrink="0"
-        position="relative"
-        padding="0px 0px 0px 0px"
-        color="brand"
-        {...getOverrideProps(overrides, "LogoWithText")}
-      ></LogoWithText>
       <Flex
         gap="40px"
         direction="row"
-        width="unset"
+        width="434px"
         height="unset"
         justifyContent="flex-start"
         alignItems="center"
-        grow="1"
-        shrink="1"
-        basis="0"
+        shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 32129767076")}
       >
+        <Image
+          width="35px"
+          height="38px"
+          display="block"
+          gap="unset"
+          alignItems="unset"
+          justifyContent="unset"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          objectFit="cover"
+          {...getOverrideProps(overrides, "Screenshot 2023-12-22 at 8.36 1")}
+        ></Image>
         <Text
           fontFamily="Inter"
-          fontSize="16px"
+          fontSize="20px"
+          fontWeight="700"
+          color="rgba(48,64,80,1)"
+          lineHeight="24px"
+          textAlign="left"
+          display="block"
+          direction="column"
+          justifyContent="unset"
+          width="unset"
+          height="unset"
+          gap="unset"
+          alignItems="unset"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="Budget App"
+          {...getOverrideProps(overrides, "Budget App")}
+        ></Text>
+        <Text
+          fontFamily="Inter"
+          fontSize="18px"
           fontWeight="400"
           color="rgba(92,102,112,1)"
           lineHeight="24px"
@@ -75,69 +92,6 @@ export default function NavBarHeader(props) {
           children="Dashboard"
           {...getOverrideProps(overrides, "Dashboard")}
         ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(92,102,112,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Jobs"
-          {...getOverrideProps(overrides, "Jobs")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(92,102,112,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Applicants"
-          {...getOverrideProps(overrides, "Applicants")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color="rgba(92,102,112,1)"
-          lineHeight="24px"
-          textAlign="left"
-          display="block"
-          direction="column"
-          justifyContent="unset"
-          width="unset"
-          height="unset"
-          gap="unset"
-          alignItems="unset"
-          shrink="0"
-          position="relative"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Company"
-          {...getOverrideProps(overrides, "Company")}
-        ></Text>
       </Flex>
       <Flex
         gap="32px"
@@ -153,34 +107,29 @@ export default function NavBarHeader(props) {
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Frame 32129767081")}
       >
-        <MyIcon
-          width="24px"
-          height="24px"
-          display="block"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
-          overflow="hidden"
+        <Flex
+          gap="8px"
+          direction="row"
+          width="unset"
+          height="unset"
+          justifyContent="flex-start"
+          alignItems="flex-start"
           shrink="0"
           position="relative"
           padding="0px 0px 0px 0px"
-          type="notification"
-          {...getOverrideProps(overrides, "MyIcon")}
-        ></MyIcon>
-        <Image
-          width="45px"
-          height="45px"
-          display="block"
-          gap="unset"
-          alignItems="unset"
-          justifyContent="unset"
-          shrink="0"
-          position="relative"
-          borderRadius="160px"
-          padding="0px 0px 0px 0px"
-          objectFit="cover"
-          {...getOverrideProps(overrides, "image")}
-        ></Image>
+          {...getOverrideProps(overrides, "actions")}
+        >
+          <Button
+            width="unset"
+            height="unset"
+            shrink="0"
+            size="default"
+            isDisabled={false}
+            variation="primary"
+            children="Sign out"
+            {...getOverrideProps(overrides, "Button")}
+          ></Button>
+        </Flex>
       </Flex>
     </Flex>
   );
