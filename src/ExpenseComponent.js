@@ -5,7 +5,7 @@
     3) Deleting the expenses - use a button
 */
 
-import { Button, Flex, Text, View } from "@aws-amplify/ui-react";
+import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 // Expenses Model
 import { createExpense, updateExpense, deleteExpense } from './graphql/mutations';
 import { listExpenses } from './graphql/queries';
@@ -15,6 +15,9 @@ import { listExpenses } from './graphql/queries';
 import { generateClient } from 'aws-amplify/api';
 
 import { useEffect, useState } from 'react';
+//MUI Icons
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 // To connect with the GraphQL api
 const client = generateClient();
@@ -27,18 +30,20 @@ export default function ExpenseComponent() {
       displayExpenses();
     }, []);
 
+    // Read expenses
     async function displayExpenses(){
       const expenses = await client.graphql({query:listExpenses});
       console.log(expenses);
       setItems(expenses.data.listExpenses.items);
     }
 
+    // Create expense
     async function createExpenseItem() {
       try {
         const expenseInput = {
           amount: 40.00,        // Replace with the actual amount
           category: 'Food', // Replace with the actual category
-          description: 'My second expense!',
+          description: 'so much expense that it might be overflowing',
           date: '2023-02-01'     // Replace with the actual date
         };
         await client.graphql({
@@ -55,6 +60,42 @@ export default function ExpenseComponent() {
       }
     }
 
+    // Delete expense
+    async function deleteExpenseItem(id) {
+      try {
+        await client.graphql({
+          query: deleteExpense,
+          variables: {
+            input: { id },
+          },
+        });
+        displayExpenses();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    //Update expense
+    async function editExpenseItem(id) {
+      try {
+        await client.graphql({
+          query: updateExpense,
+          variables: {
+            input: {
+              id : id,
+              amount: 100.00,        // Replace with the actual amount
+              category: 'Furniture', // Replace with the actual category
+              description: 'Leather couch',
+              date: '2023-03-01'     // Replace with the actual date
+            }}
+        })
+        displayExpenses();
+      } catch (e) {
+        console.log(e);
+      }
+    }
+
+    // Sorting functions
     const handleSort = (key) => {
       let direction = 'asc';
       if (sortConfig.key === key && sortConfig.direction === 'asc') {
@@ -72,7 +113,7 @@ export default function ExpenseComponent() {
     });
 
     return (
-        <>
+        <>        
         <h1>Expenses</h1>
         <Button
           size="small"
@@ -88,6 +129,7 @@ export default function ExpenseComponent() {
             <th onClick={() => handleSort('description')}>Description</th>
             <th onClick={() => handleSort('amount')}>Amount</th>
             <th onClick={() => handleSort('date')}>Date</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -97,11 +139,23 @@ export default function ExpenseComponent() {
               <td>{item.description}</td>
               <td>{item.amount}</td>
               <td>{item.date}</td>
+              <td>
+              <DeleteIcon 
+                onClick={() => {
+                  deleteExpenseItem(item.id);
+                }}
+              />
+              <EditIcon
+                onClick={() => {
+                  editExpenseItem(item.id);
+                }}
+              />
+
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-
         </>
     );
 }
