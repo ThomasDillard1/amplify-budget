@@ -2,9 +2,7 @@ import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 // Expenses Model
 import { createExpense, updateExpense, deleteExpense } from './graphql/mutations';
 import { listExpenses } from './graphql/queries';
-import {
-  ExpenseCreateForm 
- } from './ui-components';
+import { ExpenseCreateForm, ExpenseUpdateForm } from './ui-components';
 
 // GraphQL API
 import { generateClient } from 'aws-amplify/api';
@@ -13,9 +11,10 @@ import { useEffect, useState } from 'react';
 //MUI Icons
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+
+
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-//import DialogTitle from '@mui/material/DialogTitle';
-//import Dialog from '@mui/material/Dialog';
+
 // To connect with the GraphQL api
 const client = generateClient();
 
@@ -23,6 +22,8 @@ export default function ExpenseComponent() {
     const [items, setItems] = useState([]);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
     const [isCreateExpenseModalOpen, setCreateExpenseModalOpen] = useState(false);
+    const [isUpdateExpenseModalOpen, setUpdateExpenseModalOpen] = useState(false);
+    const [updateExpenseId, setUpdateExpenseId] = useState(null);
 
     useEffect(() => {  
       displayExpenses();
@@ -59,24 +60,13 @@ export default function ExpenseComponent() {
       }
     }
 
-    //Update expense
-    async function editExpenseItem(id) {
-      try {
-        await client.graphql({
-          query: updateExpense,
-          variables: {
-            input: {
-              id : id,
-              amount: 100.00,        // Replace with the actual amount
-              category: 'Furniture', // Replace with the actual category
-              description: 'Leather couch',
-              date: '2023-03-01'     // Replace with the actual date
-            }}
-        })
-        displayExpenses();
-      } catch (e) {
-        console.log(e);
-      }
+    //Update expense modal - <ExpenseUpdateForm />
+    const openUpdateExpenseModal = () => {
+      setUpdateExpenseModalOpen(true);
+    }
+
+    const closeUpdateExpenseModal = () => {
+      setUpdateExpenseModalOpen(false);
     }
 
     // Sorting functions
@@ -118,6 +108,17 @@ export default function ExpenseComponent() {
           </DialogContent>
         </Dialog>
 
+        {/*Update Expense Modal */}
+        <Dialog fullWidth={true} open={isUpdateExpenseModalOpen} onClose={closeUpdateExpenseModal}>
+          <DialogTitle>Edit Expense</DialogTitle>
+          <DialogContent>
+            <ExpenseUpdateForm id={updateExpenseId} onSuccess={() => {
+              closeUpdateExpenseModal();
+              displayExpenses();
+              }}/>
+          </DialogContent>
+        </Dialog>
+
       <table>
         <thead>
           <tr>
@@ -145,7 +146,8 @@ export default function ExpenseComponent() {
               <EditIcon
                 sx={{ color: 'hsl(190, 50%, 50%)', cursor: 'pointer'}}
                 onClick={() => {
-                  editExpenseItem(item.id);
+                  setUpdateExpenseId(item.id);
+                  openUpdateExpenseModal();
                 }}
               />
 

@@ -239,6 +239,7 @@ export default function ExpenseUpdateForm(props) {
         label="Date"
         isRequired={true}
         isReadOnly={false}
+        type="date"
         value={date}
         onChange={(e) => {
           let { value } = e.target;
