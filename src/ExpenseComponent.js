@@ -13,14 +13,16 @@ import { useEffect, useState } from 'react';
 //MUI Icons
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+//import DialogTitle from '@mui/material/DialogTitle';
+//import Dialog from '@mui/material/Dialog';
 // To connect with the GraphQL api
 const client = generateClient();
 
 export default function ExpenseComponent() {
     const [items, setItems] = useState([]);
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
-    const [isCreateModalOpen, setCreateModalOpen] = useState(false);
+    const [isCreateExpenseModalOpen, setCreateExpenseModalOpen] = useState(false);
 
     useEffect(() => {  
       displayExpenses();
@@ -33,27 +35,13 @@ export default function ExpenseComponent() {
       setItems(expenses.data.listExpenses.items);
     }
 
-    // Create expense
-    async function createExpenseItem() {
-      try {
-        const expenseInput = {
-          amount: 40.00,        // Replace with the actual amount
-          category: 'Food', // Replace with the actual category
-          description: 'so much expense that it might be overflowing',
-          date: '2023-02-01'     // Replace with the actual date
-        };
-        await client.graphql({
-          query: createExpense,
-          variables: {
-            input:
-              expenseInput
-          }
-        });
-        console.log(expenseInput)
-        displayExpenses();
-      } catch (e){
-        console.log(e)
-      }
+    // Create expense modal - <ExpenseCreateForm />
+    const openCreateExpenseModal = () => {
+      setCreateExpenseModalOpen(true);
+    }
+
+    const closeCreateExpenseModal = () => {
+      setCreateExpenseModalOpen(false);
     }
 
     // Delete expense
@@ -111,17 +99,25 @@ export default function ExpenseComponent() {
     return (
         <>        
         <h1>Expenses</h1>
-        <ExpenseCreateForm />
         <Button
           size="small"
           variation="primary"
           onClick={() => {
-            createExpenseItem();
+            openCreateExpenseModal();
           }}
         >Create Expense</Button>
 
         {/*Create Expense Modal */}
-        
+        <Dialog fullWidth={true} open={isCreateExpenseModalOpen} onClose={closeCreateExpenseModal}>
+          <DialogTitle>Create Expense</DialogTitle>
+          <DialogContent>
+            <ExpenseCreateForm onSuccess={() => {
+              closeCreateExpenseModal();
+              displayExpenses();
+              }}/>
+          </DialogContent>
+        </Dialog>
+
       <table>
         <thead>
           <tr>

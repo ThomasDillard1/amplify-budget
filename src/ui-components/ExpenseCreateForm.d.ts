@@ -48,7 +48,6 @@ export declare type ExpenseCreateFormProps = React.PropsWithChildren<{
     onSubmit?: (fields: ExpenseCreateFormInputValues) => ExpenseCreateFormInputValues;
     onSuccess?: (fields: ExpenseCreateFormInputValues) => void;
     onError?: (fields: ExpenseCreateFormInputValues, errorMessage: string) => void;
-    onCancel?: () => void;
     onChange?: (fields: ExpenseCreateFormInputValues) => ExpenseCreateFormInputValues;
     onValidate?: ExpenseCreateFormValidationValues;
 } & React.CSSProperties>;
