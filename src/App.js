@@ -14,8 +14,11 @@ function App({ signOut, user }) {
   console.log(user);
   return (
     <>
+    <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <NavBarHeader2 />
       <ExpenseComponent></ExpenseComponent>
+    </div>
+
     </>
   );
 }

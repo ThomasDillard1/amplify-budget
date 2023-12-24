@@ -86,8 +86,7 @@ export default function ExpenseComponent() {
       }
     });
 
-    return (
-        <>        
+    /*
         <h1>Expenses</h1>
         <Button
           size="small"
@@ -96,29 +95,61 @@ export default function ExpenseComponent() {
             openCreateExpenseModal();
           }}
         >Create Expense</Button>
+    */
 
-        {/*Create Expense Modal */}
-        <Dialog fullWidth={true} open={isCreateExpenseModalOpen} onClose={closeCreateExpenseModal}>
-          <DialogTitle>Create Expense</DialogTitle>
-          <DialogContent>
-            <ExpenseCreateForm onSuccess={() => {
-              closeCreateExpenseModal();
-              displayExpenses();
-              }}/>
-          </DialogContent>
-        </Dialog>
+    const underlineStyle = {
+      textDecoration: 'underline',
+      textUnderlineOffset: '.4em'
+    };
 
-        {/*Update Expense Modal */}
-        <Dialog fullWidth={true} open={isUpdateExpenseModalOpen} onClose={closeUpdateExpenseModal}>
-          <DialogTitle>Edit Expense</DialogTitle>
-          <DialogContent>
-            <ExpenseUpdateForm id={updateExpenseId} onSuccess={() => {
-              closeUpdateExpenseModal();
-              displayExpenses();
-              }}/>
-          </DialogContent>
-        </Dialog>
+    const modalTitle = {
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '10px 0px 0px 0px'
+    }
 
+    return (
+        <>        
+    <View
+      width="540px"
+      margin="50px 0px 0px 50px"
+      boxShadow="0px 4px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.05000000074505806)"
+      borderRadius="8px"
+      backgroundColor="white"
+    >
+    <Flex
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        padding="10px 25px 10px 15px" //top, right, bottom, left
+        borderBottom="1px solid #ccc" // You can customize the border style
+      >
+        <Flex direction="row" alignItems="center">
+          <Text
+          fontSize="xl" 
+          fontWeight="bold" 
+          style={underlineStyle}
+          >
+            Expenses
+          </Text>
+          {/* Optional: You can add some space between the title and button */}
+          {/* <div style={{ marginLeft: '8px' }}></div> */}
+        </Flex>
+        <Button
+          size="small"
+          variation="primary"
+          onClick={() => {
+            openCreateExpenseModal();
+          }}
+        >
+          Create Expense
+        </Button>
+      </Flex>
+
+      <Flex
+        direction="column"
+        padding="10px 0px 10px 10px"
+      >
       <table>
         <thead>
           <tr>
@@ -156,6 +187,35 @@ export default function ExpenseComponent() {
           ))}
         </tbody>
       </table>
+      </Flex>
+      </View>
+
+
+        {/*Create Expense Modal */}
+        <Dialog fullWidth={true} open={isCreateExpenseModalOpen} onClose={closeCreateExpenseModal}>
+          <Flex style={modalTitle}>
+            <DialogTitle>Create Expense</DialogTitle>
+          </Flex>
+          <DialogContent>
+            <ExpenseCreateForm onSuccess={() => {
+              closeCreateExpenseModal();
+              displayExpenses();
+              }}/>
+          </DialogContent>
+        </Dialog>
+
+        {/*Update Expense Modal */}
+        <Dialog fullWidth={true} open={isUpdateExpenseModalOpen} onClose={closeUpdateExpenseModal}>
+          <Flex style={modalTitle}>
+              <DialogTitle>Edit Expense</DialogTitle>
+          </Flex>
+          <DialogContent>
+            <ExpenseUpdateForm id={updateExpenseId} onSuccess={() => {
+              closeUpdateExpenseModal();
+              displayExpenses();
+              }}/>
+          </DialogContent>
+        </Dialog>
         </>
     );
 }
