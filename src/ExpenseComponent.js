@@ -11,9 +11,11 @@ import { useEffect, useState } from 'react';
 //MUI Icons
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-
+import FilterListIcon from '@mui/icons-material/FilterList';
+import SortIcon from '@mui/icons-material/Sort';
 
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
+
 
 // To connect with the GraphQL api
 const client = generateClient();
@@ -108,6 +110,8 @@ export default function ExpenseComponent() {
       padding: '10px 0px 0px 0px'
     }
 
+    const thStyle = { display: 'flex', alignItems: 'center' }
+
     return (
         <>        
     <View
@@ -153,10 +157,10 @@ export default function ExpenseComponent() {
       <table>
         <thead>
           <tr>
-            <th onClick={() => handleSort('category')}>Category</th>
-            <th onClick={() => handleSort('description')}>Description</th>
-            <th onClick={() => handleSort('amount')}>Amount</th>
-            <th onClick={() => handleSort('date')}>Date</th>
+            <th> <div style={thStyle} onClick={() => handleSort('category')}>Category<SortIcon fontSize="small" /></div></th>
+            <th> <div style={thStyle} onClick={() => handleSort('description')}>Description<SortIcon fontSize="small" /></div></th>
+            <th> <div style={thStyle} onClick={() => handleSort('amount')}>Amount<SortIcon fontSize="small" /></div></th>
+            <th> <div style={thStyle} onClick={() => handleSort('date')}>Date<SortIcon fontSize="small" /></div></th>
             <th></th>
           </tr>
         </thead>
