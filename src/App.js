@@ -6,6 +6,7 @@ import config from './amplifyconfiguration.json';
 import { useEffect, useState } from 'react';
 import ExpenseComponent from './ExpenseComponent';
 import { NavBarHeader2 } from './ui-components';
+import CategoryComponent from './CategoryComponent';
 
 // To connect with amplify and configure user
 Amplify.configure(config);
@@ -17,6 +18,7 @@ function App({ signOut, user }) {
     <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <NavBarHeader2 />
       <ExpenseComponent></ExpenseComponent>
+      <CategoryComponent></CategoryComponent>
     </div>
 
     </>
