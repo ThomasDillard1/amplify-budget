@@ -1,5 +1,5 @@
 import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
-import CategoryTimeDropdown from "./CategoryTimeDropdown";
+import { CategoryTimeDropdown } from "./CategoryTimeDropdown";
 // Expenses Model
 import { listExpenses } from './graphql/queries';
 import { useEffect, useState } from 'react';
@@ -11,11 +11,17 @@ import { generateClient } from 'aws-amplify/api';
 const client = generateClient();
 
 export default function CategoryComponent(){
+    const [selectedTimePeriod, setSelectedTimePeriod] = useState('Total');
+    const handleTimePeriodChange = (selectedPeriod) => {
+        //display the pie chart based on the change in the time period selection
+        setSelectedTimePeriod(selectedPeriod);
+
+    }
+
     const underlineStyle = {
         textDecoration: 'underline',
         textUnderlineOffset: '.4em'
-      };
-    
+    };    
     return (
         <>        
     <View
@@ -41,7 +47,7 @@ export default function CategoryComponent(){
             Category Breakdown
           </Text>
         </Flex>
-        <CategoryTimeDropdown/>
+        <CategoryTimeDropdown onTimePeriodChange={handleTimePeriodChange}/>
         {/* This will be the dropdown component */}
       </Flex>
 
@@ -49,6 +55,7 @@ export default function CategoryComponent(){
         direction="column"
         padding="10px 0px 10px 10px"
       >
+        <Text>{selectedTimePeriod}</Text>
       </Flex>
       </View>
         </>
