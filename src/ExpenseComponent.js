@@ -116,7 +116,7 @@ export default function ExpenseComponent() {
         <>        
     <View
       width="540px"
-      margin="50px 0px 0px 50px"
+      margin="00px 0px 0px 0px" //top, right, bottom, left
       boxShadow="0px 4px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.05000000074505806)"
       borderRadius="8px"
       backgroundColor="white"
@@ -126,7 +126,6 @@ export default function ExpenseComponent() {
         justifyContent="space-between"
         alignItems="center"
         padding="10px 25px 10px 15px" //top, right, bottom, left
-        borderBottom="1px solid #ccc" // You can customize the border style
       >
         <Flex direction="row" alignItems="center">
           <Text
@@ -169,7 +168,7 @@ export default function ExpenseComponent() {
             <tr key={index}>
               <td>{item.category}</td>
               <td>{item.description}</td>
-              <td>{item.amount}</td>
+              <td>${item.amount}</td>
               <td>{item.date}</td>
               <td>
                 <DeleteIcon 

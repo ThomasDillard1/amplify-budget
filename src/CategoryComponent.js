@@ -1,5 +1,6 @@
 import { Button, Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 import { CategoryTimeDropdown } from "./CategoryTimeDropdown";
+import { PieChartComponent } from "./PieChartComponent";
 // Expenses Model
 import { listExpenses } from './graphql/queries';
 import { useEffect, useState } from 'react';
@@ -26,7 +27,7 @@ export default function CategoryComponent(){
         <>        
     <View
       width="540px"
-      margin="50px 0px 0px 50px"
+      margin="0px 0px 0px 00px" //top, right, bottom, left
       boxShadow="0px 4px 6px rgba(0.05098039284348488, 0.10196078568696976, 0.14901961386203766, 0.05000000074505806)"
       borderRadius="8px"
       backgroundColor="white"
@@ -48,14 +49,14 @@ export default function CategoryComponent(){
           </Text>
         </Flex>
         <CategoryTimeDropdown onTimePeriodChange={handleTimePeriodChange}/>
-        {/* This will be the dropdown component */}
       </Flex>
 
       <Flex
         direction="column"
         padding="10px 0px 10px 10px"
       >
-        <Text>{selectedTimePeriod}</Text>
+        {/* Pie chart component and category list */}
+        <PieChartComponent selectedTimePeriod={selectedTimePeriod} />
       </Flex>
       </View>
         </>
