@@ -25,7 +25,7 @@ Category Breakdown Component:
 Expense Component:
 - You can sort the expenses by clicking on the table headers. Ex] Sort by amount by clicking amount. Clicking again will flip-flop ascending/descending order.
 
-<img width="500" alt="Screenshot 2023-12-31 at 7 17 45 PM" src="https://github.com/ThomasDillard1/amplify-budget/assets/67171872/47fcb50d-c4de-4bf9-9a1f-dc3b05c67f86">
+<img width="450" alt="Screenshot 2023-12-31 at 7 17 45 PM" src="https://github.com/ThomasDillard1/amplify-budget/assets/67171872/47fcb50d-c4de-4bf9-9a1f-dc3b05c67f86">
 
 # Outcomes
 
