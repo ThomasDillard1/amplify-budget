@@ -8,6 +8,16 @@ import { Pie } from 'react-chartjs-2';
 export const PieChartComponent  = ({selectedTimePeriod}) => {
     const [titleDisplay, setTitleDisplay] = useState(`Spending in the last ${selectedTimePeriod}`);
     const [totalAmount, setTotalAmount] = useState(0);
+    const CATEGORY_COLORS = {
+        purple: 'hsl(300, 70%, 70%)',
+        pink: 'hsl(340, 70%, 70%)',
+        blue: 'hsl(220, 70%, 70%)',
+        green: 'hsl(130, 44%, 63%)',
+        yellow: 'hsl(60, 75%, 75%)',
+        orange: 'hsl(30, 75%, 75%)',
+        red: 'hsl(0, 50%, 50%)',
+        neutral: 'hsl(210, 5%, 87%)',
+      };
     const [pieChartOptions, setPieChartOptions] = useState({
         plugins: {
             title: {
@@ -157,9 +167,10 @@ export const PieChartComponent  = ({selectedTimePeriod}) => {
     }
 
     function getChartColors(numColors) {
-        // Function to generate random colors for the chart
-        const colors = [];
-        for (let i = 0; i < numColors; i++) {
+        const colors = Object.values(CATEGORY_COLORS).slice(0, numColors);
+
+        // If there are more categories than predefined colors, add random colors for the rest
+        for (let i = colors.length; i < numColors; i++) {
             colors.push(getRandomColor());
         }
         return colors;
@@ -186,23 +197,21 @@ export const PieChartComponent  = ({selectedTimePeriod}) => {
                 {titleDisplay}:<Text style={{ ...underlineStyle, display: 'inline' }}> ${totalAmount}</Text>
             </Text>
             <View
-        padding="10px 15px 10px 15px" // top, right, bottom, left
-        height="345px" // 540px is the full 100%
-      >
-        <Flex
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          height="100%" // Set the height to 100% to take the full height of the parent
-        >
-          <Pie
-            data={pieChartData}
-            options={pieChartOptions}
-          />
-        </Flex>
-      </View>   
-
-            
+                padding="10px 15px 10px 15px" // top, right, bottom, left
+                height="345px" // 540px is the full 100%
+            >
+                <Flex
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                height="100%" // Set the height to 100% to take the full height of the parent
+                >
+                <Pie
+                    data={pieChartData}
+                    options={pieChartOptions}
+                />
+                </Flex>
+            </View>   
         </View>
     );
 }
