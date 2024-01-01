@@ -13,7 +13,10 @@ export const PieChartComponent  = ({selectedTimePeriod}) => {
             title: {
                 display: true,
                 text: `Spending in the last ${selectedTimePeriod}`
-            }
+            },
+            legend: {
+                position: 'bottom'
+            },
         }
     })
 
@@ -143,8 +146,9 @@ export const PieChartComponent  = ({selectedTimePeriod}) => {
                     text: titleDisplay + ": $" + totalAmount
                 },
                 legend: {
-                    position: 'top'
-                }
+                    position: 'bottom'
+                },
+            
             }
         }
 
@@ -182,10 +186,22 @@ export const PieChartComponent  = ({selectedTimePeriod}) => {
                 {titleDisplay}:<Text style={{ ...underlineStyle, display: 'inline' }}> ${totalAmount}</Text>
             </Text>
             <View
-                padding="10px 25px 10px 15px" //top, right, bottom, left
-            >
-                <Pie data={pieChartData} options={pieChartOptions}/>
-            </View>
+        padding="10px 15px 10px 15px" // top, right, bottom, left
+        height="345px" // 540px is the full 100%
+      >
+        <Flex
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+          height="100%" // Set the height to 100% to take the full height of the parent
+        >
+          <Pie
+            data={pieChartData}
+            options={pieChartOptions}
+          />
+        </Flex>
+      </View>   
+
             
         </View>
     );

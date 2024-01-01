@@ -16,16 +16,10 @@ function App({ signOut, user }) {
     <>
     <div style={{ backgroundColor: '#f0f0f0', minHeight: '100vh' }}>
       <NavBarHeader2 />
-      <Flex
-        direction="row"
-        justifyContent="space-between"
-        padding="0px 0px 0px 0px" //top, right, bottom, left
-      >
-        <Flex direction="row" alignItems="center">
-        <ExpenseComponent></ExpenseComponent>
-        </Flex>
-      <CategoryComponent></CategoryComponent>
-      </Flex>
+      <Flex justifyContent="space-evenly" alignItems="flex-start" padding="50px 50px">
+      <ExpenseComponent />
+      <CategoryComponent />
+    </Flex>
     </div>
 
     </>

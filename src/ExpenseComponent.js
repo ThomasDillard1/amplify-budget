@@ -135,8 +135,6 @@ export default function ExpenseComponent() {
           >
             Expenses
           </Text>
-          {/* Optional: You can add some space between the title and button */}
-          {/* <div style={{ marginLeft: '8px' }}></div> */}
         </Flex>
         <Button
           size="small"
