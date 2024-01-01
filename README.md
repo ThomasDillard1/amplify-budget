@@ -1,11 +1,14 @@
-Overview:
-I developed a personal finance application where users can input and track their expenses. I used AWS Amplify to simplify the development process by integrating authentication (AWS Cognitio), user authorization (AWS IAM), database (Dynamo DB) & GraphQL API, and hosting for CI/CD via GitHub.
+# Project Overview:
 
-Tech Stack:
+I developed a personal finance application where users can input and track their expenses. I used AWS Amplify to simplify the development process by integrating authentication (AWS Cognitio), user authorization (AWS IAM), database (Dynamo DB) & GraphQL API, and hosting for CI/CD via GitHub. Project deployed at: https://main.d3oritrzpio0z8.amplifyapp.com/ 
+
+# Tech Stack:
+
 Backend - DynamoDB, GraphQL
 Frontend - React.js
 
-Get Started:
+# Get Started:
+
 1) Create an account via email
 2) Create expenses - you can create, read, update, delete, sort & filter
 3) Get the category breakdown to see your spending habits over a time period
