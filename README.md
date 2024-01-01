@@ -18,9 +18,11 @@ Dashboard:
 <img width="1552" alt="Screenshot 2023-12-31 at 7 14 57 PM" src="https://github.com/ThomasDillard1/amplify-budget/assets/67171872/b3434adb-cad0-4ed7-aa25-a7cdc65522ee">
 
 Category Breakdown Component:
+- You can filter the breakdown by Total, 3 months, 6 months, or 12 months time.
 
 <img width="350" alt="Screenshot 2023-12-31 at 12 31 02 AM" src="https://github.com/ThomasDillard1/amplify-budget/assets/67171872/609b49fc-9eb3-4ecd-a46c-c57211705c75">
 
 Expense Component:
+- You can sort the expenses by clicking on the table headers. Ex] Sort by amount by clicking amount. Clicking again will flip-flop ascending/descending order.
 
 <img width="500" alt="Screenshot 2023-12-31 at 7 17 45 PM" src="https://github.com/ThomasDillard1/amplify-budget/assets/67171872/47fcb50d-c4de-4bf9-9a1f-dc3b05c67f86">
